@@ -3,6 +3,8 @@ package app;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {
 
@@ -39,7 +41,7 @@ public class Main {
                     break;
 
                 case 5:
-                    System.out.println("Option 5: Save data to JSON / XML (not implemented)");
+                    saveToFile();
                     pause();
                     break;
 
@@ -124,8 +126,61 @@ public class Main {
         }
     }
 
+    // FUNCTION 5: SAVE TO JSON / XML
+    private static void saveToFile() {
+        if (dataList.isEmpty()) {
+            System.out.println("No data to save. Please input data first.");
+            return;
+        }
 
+        System.out.println("Choose file format:");
+        System.out.println("1. JSON");
+        System.out.println("2. XML");
+        System.out.print("Your choice: ");
 
+        int choice = readInt();
+
+        switch (choice) {
+            case 1:
+                saveAsJson();
+                break;
+            case 2:
+                saveAsXml();
+                break;
+            default:
+                System.out.println("Invalid choice!");
+        }
+    }
+
+    private static void saveAsJson() {
+        try (FileWriter writer = new FileWriter("data.json")) {
+            writer.write("[\n");
+            for (int i = 0; i < dataList.size(); i++) {
+                writer.write("  " + dataList.get(i));
+                if (i < dataList.size() - 1) {
+                    writer.write(",");
+                }
+                writer.write("\n");
+            }
+            writer.write("]");
+            System.out.println("Data saved to data.json successfully!");
+        } catch (IOException e) {
+            System.out.println("Error saving JSON file!");
+        }
+    }
+
+    private static void saveAsXml() {
+        try (FileWriter writer = new FileWriter("data.xml")) {
+            writer.write("<numbers>\n");
+            for (int value : dataList) {
+                writer.write("  <number>" + value + "</number>\n");
+            }
+            writer.write("</numbers>");
+            System.out.println("Data saved to data.xml successfully!");
+        } catch (IOException e) {
+            System.out.println("Error saving XML file!");
+        }
+    }
 
     private static void showMenu() {
         System.out.println("==============================");
