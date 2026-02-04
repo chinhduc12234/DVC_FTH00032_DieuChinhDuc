@@ -1,10 +1,13 @@
 package app;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     private static final Scanner scanner = new Scanner(System.in);
+    private static final List<Integer> dataList = new ArrayList<>();
 
     public static void main(String[] args) {
         int choice;
@@ -16,27 +19,27 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Option 1: Input data");
+                    inputData();
                     pause();
                     break;
 
                 case 2:
-                    System.out.println("Option 2: Calculate sum");
+                    System.out.println("Option 2: Calculate sum (not implemented)");
                     pause();
                     break;
 
                 case 3:
-                    System.out.println("Option 3: Find maximum value");
+                    System.out.println("Option 3: Find maximum value (not implemented)");
                     pause();
                     break;
 
                 case 4:
-                    System.out.println("Option 4: Display list");
+                    System.out.println("Option 4: Display list (not implemented)");
                     pause();
                     break;
 
                 case 5:
-                    System.out.println("Option 5: Save data to JSON / XML");
+                    System.out.println("Option 5: Save data to JSON / XML (not implemented)");
                     pause();
                     break;
 
@@ -49,6 +52,32 @@ public class Main {
                     pause();
             }
         } while (choice != 0);
+    }
+
+    // ===============================
+    // FUNCTION 1: INPUT DATA
+    // ===============================
+    private static void inputData() {
+        System.out.println("Enter integers (type 'q' to stop):");
+
+        while (true) {
+            System.out.print("Input value: ");
+            String input = scanner.next();
+
+            if (input.equalsIgnoreCase("q")) {
+                break;
+            }
+
+            try {
+                int value = Integer.parseInt(input);
+                dataList.add(value);
+                System.out.println("Added: " + value);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input! Please enter an integer.");
+            }
+        }
+
+        System.out.println("Total elements in list: " + dataList.size());
     }
 
     private static void showMenu() {
