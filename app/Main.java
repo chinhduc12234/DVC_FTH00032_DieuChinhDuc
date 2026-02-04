@@ -34,7 +34,7 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.println("Option 4: Display list (not implemented)");
+                    displayList();
                     pause();
                     break;
 
@@ -110,6 +110,20 @@ public class Main {
 
         System.out.println("Maximum value in the list: " + max);
     }
+
+    // FUNCTION 4: DISPLAY LIST
+    private static void displayList() {
+        if (dataList.isEmpty()) {
+            System.out.println("The list is empty. Please input data first.");
+            return;
+        }
+
+        System.out.println("Current values in the list:");
+        for (int i = 0; i < dataList.size(); i++) {
+            System.out.println("Index " + i + ": " + dataList.get(i));
+        }
+    }
+
 
 
 
