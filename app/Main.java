@@ -24,7 +24,7 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.println("Option 2: Calculate sum (not implemented)");
+                    calculateSum();
                     pause();
                     break;
 
@@ -54,9 +54,7 @@ public class Main {
         } while (choice != 0);
     }
 
-    // ===============================
     // FUNCTION 1: INPUT DATA
-    // ===============================
     private static void inputData() {
         System.out.println("Enter integers (type 'q' to stop):");
 
@@ -79,6 +77,23 @@ public class Main {
 
         System.out.println("Total elements in list: " + dataList.size());
     }
+
+
+    // FUNCTION 2: CALCULATE SUM
+    private static void calculateSum() {
+        if (dataList.isEmpty()) {
+            System.out.println("The list is empty. Please input data first.");
+            return;
+        }
+
+        int sum = 0;
+        for (int value : dataList) {
+            sum += value;
+        }
+
+        System.out.println("Sum of elements: " + sum);
+    }
+
 
     private static void showMenu() {
         System.out.println("==============================");
