@@ -29,7 +29,7 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("Option 3: Find maximum value (not implemented)");
+                    findMaxValue();
                     pause();
                     break;
 
@@ -93,6 +93,24 @@ public class Main {
 
         System.out.println("Sum of elements: " + sum);
     }
+
+    // FUNCTION 3: FIND MAX VALUE
+    private static void findMaxValue() {
+        if (dataList.isEmpty()) {
+            System.out.println("The list is empty. Please input data first.");
+            return;
+        }
+
+        int max = dataList.get(0);
+        for (int value : dataList) {
+            if (value > max) {
+                max = value;
+            }
+        }
+
+        System.out.println("Maximum value in the list: " + max);
+    }
+
 
 
     private static void showMenu() {
